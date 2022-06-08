@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sky
+  m_Name: Sky_Autumn
   m_Shader: {fileID: 4800000, guid: eb3c6fb598ded4c71b8968e1c40a3b4d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -28,9 +28,9 @@ Material:
     - _HorizonLineBlendMode: 0
     - _HorizonLineContribution: 0.8
     - _HorizonLineExponent: 2.89
-    - _SkyGradientExponent: 0
+    - _SkyGradientExponent: 1
     - _SunDiscContribution: 1
-    - _SunDiscExponent: 100000
+    - _SunDiscExponent: 10000
     - _SunDiscExponentSize: 100000
     - _SunDiscMultiplier: 100000
     - _SunDiscMultiplierSharpness: 100000
@@ -40,9 +40,9 @@ Material:
     - _View: 0
     - __dirty: 0
     m_Colors:
-    - _HorizonLineColor: {r: 0.5990566, g: 0.82219034, b: 1, a: 1}
-    - _SkyGradientBottom: {r: 0.8235294, g: 0.99349064, b: 1, a: 1}
-    - _SkyGradientTop: {r: 1, g: 1, b: 1, a: 1}
-    - _SunDiscColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HorizonLineColor: {r: 1, g: 0.78109187, b: 0.16509423, a: 0}
+    - _SkyGradientBottom: {r: 0.8867924, g: 0.5434993, b: 0.44757915, a: 1}
+    - _SkyGradientTop: {r: 0.7392594, g: 1, b: 0.5518868, a: 1}
+    - _SunDiscColor: {r: 0.9934018, g: 1, b: 0.6745283, a: 1}
     - _SunHaloColor: {r: 0.7735849, g: 0.69111997, b: 0.62397647, a: 0}
   m_BuildTextureStacks: []

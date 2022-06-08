@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SkyManager : MonoBehaviour
 {
+    public bool isAutumn;
     public Transform directionLight;
     Light m_light;
     public Material skyMat;
@@ -29,8 +30,12 @@ public class SkyManager : MonoBehaviour
     Sequence anims;
     void Start()
     {
+        DOTween.KillAll();
+        //≥ı ºªØ
         RenderSettings.skybox = skyMat;
+        directionLight.localEulerAngles = new Vector3(85,directionLight.localEulerAngles.y,directionLight.localEulerAngles.z);
         m_light = directionLight.GetComponent<Light>();
+        m_light.intensity = dayLightIntensity;
         Day();
 
         anims = DOTween.Sequence();
@@ -95,8 +100,6 @@ public class SkyManager : MonoBehaviour
 
     public void Day()
     {
-        directionLight.localEulerAngles = new Vector3(85,directionLight.localEulerAngles.y,directionLight.localEulerAngles.z);
-        m_light.intensity = dayLightIntensity;
         RenderSettings.reflectionIntensity = dayReflectionIntensity;
         RenderSettings.ambientIntensity = dayAmbientIntensity;
         skyMat.SetColor("_SunDiscColor", dayMat.GetColor("_SunDiscColor"));
@@ -112,11 +115,30 @@ public class SkyManager : MonoBehaviour
         skyMat.SetColor("_HorizonLineColor", dayMat.GetColor("_HorizonLineColor"));
     }
 
+    public void Sunset()
+    {
+        RenderSettings.reflectionIntensity = sunsetReflectionIntensity;
+        RenderSettings.ambientIntensity = sunsetAmbientIntensity;
+        skyMat.SetColor("_SunDiscColor", sunsetMat.GetColor("_SunDiscColor"));
+        skyMat.SetFloat("_SunDiscMultiplier", sunsetMat.GetFloat("_SunDiscMultiplier"));
+        skyMat.SetFloat("_SunDiscExponent", sunsetMat.GetFloat("_SunDiscExponent"));
 
+        skyMat.SetColor("_SunHaloColor", sunsetMat.GetColor("_SunHaloColor"));
+        skyMat.SetFloat("_SunHaloExponent", sunsetMat.GetFloat("_SunHaloExponent"));
+        skyMat.SetFloat("_SunHaloContribution", sunsetMat.GetFloat("_SunHaloContribution"));
+
+        skyMat.SetColor("_SkyGradientTop", sunsetMat.GetColor("_SkyGradientTop"));
+        skyMat.SetColor("_SkyGradientBottom", sunsetMat.GetColor("_SkyGradientBottom"));
+        skyMat.SetColor("_HorizonLineColor", sunsetMat.GetColor("_HorizonLineColor"));
+    }
 
     void OnDestroy()
     {
-        Day();
+        if (isAutumn) {
+            Sunset();
+        } else {
+            Day();
+        }
     }
 
 }
